@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; // Скорость перемещения персонажа
+    [SerializeField]
+    private float speed = 5f; // Скорость перемещения персонажа
     private Rigidbody2D rb;
-    private bool isGrounded;
     private static PlayerMovement instance;
 
     private bool _isMooving;
@@ -26,19 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (_isMooving)
             Move();
-
-       // Получаем ввод с клавиатуры
-       // float moveHorizontal = Input.GetAxis("Horizontal");
-
-       // Создаем вектор движения
-       //Vector2 movement = new Vector2(moveHorizontal, rb.velocity.y);
-
-       // Перемещаем персонажа
-       // rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-
-       // Проверка, на земле ли персонаж
-       // isGrounded = IsGrounded();
-
     }
     private void Move()
     {
@@ -54,12 +41,6 @@ public class PlayerMovement : MonoBehaviour
         _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y);
 
         _isMooving = true;
-    }
-    private bool IsGrounded()
-    {
-        // Проверка контакта с полом с помощью Raycast
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
-        return hit.collider != null;
     }
 
     private void Awake()
