@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _localQuests:
   - {fileID: 1409167439}
+  - {fileID: 1326613134}
 --- !u!114 &910928117 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4556162162304911919, guid: f09cca834d7324c4b976151315d43c31, type: 3}
@@ -538,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: target_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4121107552425914468, guid: f09cca834d7324c4b976151315d43c31, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8867703667725093858, guid: f09cca834d7324c4b976151315d43c31, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.6113367
@@ -592,6 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326613133}
+  - component: {fileID: 1326613134}
   m_Layer: 0
   m_Name: Quest_2
   m_TagString: Untagged
@@ -614,6 +620,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326613134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326613132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8ea6cf33f4224ea0bb49aee49cff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 2
+  _targetQuest: {fileID: 424838975}
+  _questName: "\u041F\u0443-\u043F\u0443"
+  _questDescription: "\u0445\u0435 \u0445\u0435"
 --- !u!1001 &1393475392
 PrefabInstance:
   m_ObjectHideFlags: 0
