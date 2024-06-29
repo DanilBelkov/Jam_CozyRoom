@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // Скорость перемещения персонажа
-    public float jumpForce = 0f; // Сила прыжка
     private Rigidbody2D rb;
     private bool isGrounded;
-    private bool canJump;
     private static PlayerMovement instance;
+
+    private bool _isMooving;
+    private Vector2 _targetPosition;
+
 
     void Start()
     {
@@ -21,25 +20,41 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Получаем ввод с клавиатуры
-        float moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Создаем вектор движения
-        Vector2 movement = new Vector2(moveHorizontal, rb.velocity.y);
+        if (Input.GetMouseButtonDown(0))
+            SetTargetPosition();
 
-        // Перемещаем персонажа
-        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+        if (_isMooving)
+            Move();
 
-        // Проверка, на земле ли персонаж
-        isGrounded = IsGrounded();
+       // Получаем ввод с клавиатуры
+       // float moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Прыжок
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+       // Создаем вектор движения
+       //Vector2 movement = new Vector2(moveHorizontal, rb.velocity.y);
+
+       // Перемещаем персонажа
+       // rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+
+       // Проверка, на земле ли персонаж
+       // isGrounded = IsGrounded();
+
+    }
+    private void Move()
+    {
+        var newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
+        transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
+        if (transform.position.x == _targetPosition.x)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            _isMooving = false;
         }
     }
+    private void SetTargetPosition()
+    {
+        _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y);
 
+        _isMooving = true;
+    }
     private bool IsGrounded()
     {
         // Проверка контакта с полом с помощью Raycast
