@@ -16,6 +16,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private List<Quest> _localQuests;
 
+    [SerializeField]
+    private Quest _finalQuest;
+
     private static List<Quest> _quests;
 
     private void Awake()
@@ -34,7 +37,20 @@ public class QuestManager : MonoBehaviour
                 t.GetComponent<TextMeshProUGUI>().text = quest.GetDescription();
             });
     }
-
+    private void Update()
+    {
+        if (_quests.All(x => x.IsCompleted()))
+            ActivateFinalQuest();
+    }
+    private void ActivateFinalQuest()
+    {
+        if (!_finalQuest.IsCompleted())
+        {
+            var t = GameObject.Instantiate(_textTemplate);
+            t.transform.SetParent(_uiContent.transform, false);
+            t.GetComponent<TextMeshProUGUI>().text = _finalQuest.GetDescription();
+        }
+    }
     public static void CheckTargetQuest(Target target)
     {
         if (_quests != null && target != null)

@@ -11,6 +11,10 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _gameCanvas;
+
+    [SerializeField]
+    private GameObject _finalCanvas;
+
     void Awake()
     {
         GameAcvive = true;
@@ -25,6 +29,12 @@ public class MenuManager : MonoBehaviour
             Stop();
         }
 
+    }
+    public void Final()
+    {
+        _menuCanvas.SetActive(false);
+        _gameCanvas.SetActive(false);
+        _finalCanvas.SetActive(true);
     }
 
     public void Quite()
