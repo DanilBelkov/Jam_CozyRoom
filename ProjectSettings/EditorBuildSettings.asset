@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: 3e4a023d15a13d8439e5b2e125da074e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Kitchen.unity
     guid: a7ea9b83d007dcf4284e26006a0794e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ChildRoom.unity
     guid: d7cd9e92092c945418d782b2f721b6db
   m_configObjects: {}
