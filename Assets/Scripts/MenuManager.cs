@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public static bool GameAcvive;
+    public static bool IsFinal;
 
     [SerializeField]
     private GameObject _menuCanvas;
@@ -19,6 +20,7 @@ public class MenuManager : MonoBehaviour
     {
         GameAcvive = true;
         _menuCanvas.SetActive(false);
+        _finalCanvas.SetActive(false);
         _gameCanvas.SetActive(true);
     }
 
@@ -28,6 +30,9 @@ public class MenuManager : MonoBehaviour
         {
             Stop();
         }
+
+        if (IsFinal)
+            Final();
 
     }
     public void Final()

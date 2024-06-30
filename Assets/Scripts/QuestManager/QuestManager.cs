@@ -17,7 +17,9 @@ public class QuestManager : MonoBehaviour
     private List<Quest> _localQuests;
 
     [SerializeField]
-    private Quest _finalQuest;
+    private Quest _localFinalQuest;
+
+    private static Quest _finalQuest;
 
     private static List<Quest> _quests;
 
@@ -28,6 +30,9 @@ public class QuestManager : MonoBehaviour
 
         if (_uiContent == null)
             _uiContent = _uiContentPanel;
+
+        if (_finalQuest == null)
+            _finalQuest = _localFinalQuest;
 
         if (_quests != null)
             _quests.ForEach(quest =>
@@ -64,6 +69,11 @@ public class QuestManager : MonoBehaviour
                 text.gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
                 quest.Completed();
             }
+        }
+        if (!_finalQuest.IsCompleted())
+        {
+            _finalQuest.Completed();
+            MenuManager.IsFinal = true;
         }
     }
 }
