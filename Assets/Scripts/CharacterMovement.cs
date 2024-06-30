@@ -41,9 +41,15 @@ public class PlayerMovement : MonoBehaviour
     
     private bool CheckForMove()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 3);
 
-        return hitInfo.collider != null && hitInfo.collider.tag != "Target" ? true : false;
+        if (hitInfo.collider != null && hitInfo.collider.tag != "Target")
+        {
+            print(hitInfo.collider.tag);
+            print(hitInfo.collider.name);
+            return true;
+        }
+        return false;
     }
     private void Move()
     {

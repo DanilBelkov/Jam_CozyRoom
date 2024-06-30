@@ -3428,6 +3428,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 212966228872045036, guid: 29604f36edc26024582f639a081210fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5309,7 +5313,7 @@ GameObject:
   - component: {fileID: 857140000}
   m_Layer: 0
   m_Name: childtoy
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5375,7 +5379,7 @@ Transform:
   m_GameObject: {fileID: 857139996}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.83144, y: -2.8298092, z: 5.0584846}
+  m_LocalPosition: {x: 65.83144, y: -2.8298092, z: 0}
   m_LocalScale: {x: 2.385329, y: 2.385329, z: 2.385329}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6113,7 +6117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359466221341688111, guid: af0dfd9151b374eaf8101173555445cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.1478844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6359466221341688111, guid: af0dfd9151b374eaf8101173555445cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6146,6 +6150,10 @@ PrefabInstance:
     - target: {fileID: 7240068203262977990, guid: af0dfd9151b374eaf8101173555445cc, type: 3}
       propertyPath: m_Name
       value: fruit bowl
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240068203262977990, guid: af0dfd9151b374eaf8101173555445cc, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6691,15 +6699,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5615324980217953704, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.393845
+      value: 46.1
       objectReference: {fileID: 0}
     - target: {fileID: 5615324980217953704, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1677903
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 5615324980217953704, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.2744846
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5615324980217953704, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6732,6 +6740,10 @@ PrefabInstance:
     - target: {fileID: 5615324980217953710, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
       propertyPath: m_Name
       value: blender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615324980217953710, guid: e3b228ff39f7d40e9b0f48371fa676de, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8990,7 +9002,7 @@ GameObject:
   - component: {fileID: 1395885248}
   m_Layer: 0
   m_Name: waterBottle
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9056,7 +9068,7 @@ Transform:
   m_GameObject: {fileID: 1395885244}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.393444, y: 0.084190905, z: 5.0584846}
+  m_LocalPosition: {x: 9.393444, y: 0.084190905, z: 0}
   m_LocalScale: {x: 0.23170947, y: 0.27757484, z: 0.28846824}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10485,7 +10497,7 @@ GameObject:
   - component: {fileID: 1594096349}
   m_Layer: 0
   m_Name: Plaid
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10530,7 +10542,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e1babc5abbc704a47860ac402bc076ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10551,7 +10563,7 @@ Transform:
   m_GameObject: {fileID: 1594096346}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3085527, y: -1.4498091, z: 5.0584846}
+  m_LocalPosition: {x: -1.3085527, y: -1.4498091, z: 0}
   m_LocalScale: {x: 0.13638383, y: 0.111551285, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11079,7 +11091,7 @@ GameObject:
   - component: {fileID: 1598269510}
   m_Layer: 0
   m_Name: aid
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11145,7 +11157,7 @@ Transform:
   m_GameObject: {fileID: 1598269506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.6815, y: -1.5997981, z: 5.0584846}
+  m_LocalPosition: {x: 22.6815, y: -1.5997981, z: 0}
   m_LocalScale: {x: 0.236115, y: 0.236115, z: 0.236115}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12091,6 +12103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book8 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1416667988931436, guid: ef1cc712a2302cc4a935e1dfdc9ebdc0, type: 3}
+      propertyPath: m_TagString
+      value: Target
+      objectReference: {fileID: 0}
     - target: {fileID: 4685237836773256, guid: ef1cc712a2302cc4a935e1dfdc9ebdc0, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -12117,7 +12133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685237836773256, guid: ef1cc712a2302cc4a935e1dfdc9ebdc0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.0584846
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4685237836773256, guid: ef1cc712a2302cc4a935e1dfdc9ebdc0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12517,7 +12533,7 @@ GameObject:
   - component: {fileID: 1690717899}
   m_Layer: 0
   m_Name: Cat_1
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12583,7 +12599,7 @@ Transform:
   m_GameObject: {fileID: 1690717896}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.54483, y: -2.3677044, z: 5.0967207}
+  m_LocalPosition: {x: 50.54483, y: -2.3677044, z: 0}
   m_LocalScale: {x: 0.3385592, y: 0.3385592, z: 0.3385592}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14691,7 +14707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2644647723103036417, guid: 4406c0e34d9b64546be27a36e6bee01c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.1478844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2644647723103036417, guid: 4406c0e34d9b64546be27a36e6bee01c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14724,6 +14740,10 @@ PrefabInstance:
     - target: {fileID: 2644647723103036423, guid: 4406c0e34d9b64546be27a36e6bee01c, type: 3}
       propertyPath: m_Name
       value: toaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644647723103036423, guid: 4406c0e34d9b64546be27a36e6bee01c, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15043,6 +15063,10 @@ PrefabInstance:
     - target: {fileID: 4491760384495286, guid: 84fb5b0e10c5ced4798f85a433b0de4f, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212749449042014288, guid: 84fb5b0e10c5ced4798f85a433b0de4f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15500,6 +15524,10 @@ PrefabInstance:
     - target: {fileID: 4368750785189730, guid: a6a635e0d2e44fe48b68dbc0b29d27b2, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212817638638765140, guid: a6a635e0d2e44fe48b68dbc0b29d27b2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,8 @@ public class QuestManager : MonoBehaviour
     private static GameObject _uiContent;
 
     [SerializeField]
-    private GameObject _textTemplate;
+    private GameObject _localTextTemplate;
+    private static GameObject _textTemplate;
 
     [SerializeField]
     private List<Quest> _localQuests;
@@ -34,6 +35,9 @@ public class QuestManager : MonoBehaviour
         if (_finalQuest == null)
             _finalQuest = _localFinalQuest;
 
+        if (_textTemplate == null)
+            _textTemplate = _localTextTemplate;
+
         if (_quests != null)
             _quests.ForEach(quest =>
             {
@@ -42,20 +46,7 @@ public class QuestManager : MonoBehaviour
                 t.GetComponent<TextMeshProUGUI>().text = quest.GetDescription();
             });
     }
-    private void Update()
-    {
-        if (_quests.All(x => x.IsCompleted()))
-            ActivateFinalQuest();
-    }
-    private void ActivateFinalQuest()
-    {
-        if (!_finalQuest.IsCompleted())
-        {
-            var t = GameObject.Instantiate(_textTemplate);
-            t.transform.SetParent(_uiContent.transform, false);
-            t.GetComponent<TextMeshProUGUI>().text = _finalQuest.GetDescription();
-        }
-    }
+
     public static void CheckTargetQuest(Target target)
     {
         if (_quests != null && target != null)
@@ -69,8 +60,14 @@ public class QuestManager : MonoBehaviour
                 text.gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
                 quest.Completed();
             }
+            if (_quests.All(x => x.IsCompleted()) && !_finalQuest.IsCompleted())
+            {
+                var t = GameObject.Instantiate(_textTemplate);
+                t.transform.SetParent(_uiContent.transform, false);
+                t.GetComponent<TextMeshProUGUI>().text = _finalQuest.GetDescription();
+            }
         }
-        if (!_finalQuest.IsCompleted())
+        if (_quests.All(x => x.IsCompleted()) && !_finalQuest.IsCompleted() && _finalQuest.CheckTarget(target))
         {
             _finalQuest.Completed();
             MenuManager.IsFinal = true;
