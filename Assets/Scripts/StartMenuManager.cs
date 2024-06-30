@@ -19,7 +19,7 @@ public class StartMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("test", LoadSceneMode.Single);
+        SceneManager.LoadScene("Room", LoadSceneMode.Single);
     }
 
     public void NextPage()
