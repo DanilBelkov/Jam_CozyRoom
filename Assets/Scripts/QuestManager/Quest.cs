@@ -30,4 +30,6 @@ public class Quest : MonoBehaviour
         _targetQuest = target;
     }
     public int GetId() => _id;
+
+    public string GetDescription() => _questDescription;
 }
