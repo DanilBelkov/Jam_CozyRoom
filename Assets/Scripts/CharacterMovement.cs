@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _player;
+    private GameObject[] _players;
+
+    private GameObject _activePlayer;
 
     [SerializeField]
     private float speed = 5f; // Скорость перемещения персонажа
@@ -17,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = _player.GetComponent<Rigidbody2D>();
+        AcnivePlayer(0);
+
+        rb = _activePlayer.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Зафиксировать вращение
     }
 
@@ -38,9 +42,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        var newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
-        transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
-        if (transform.position.x == _targetPosition.x)
+        var newPosition = Vector2.MoveTowards(_activePlayer.transform.position, _targetPosition, speed * Time.deltaTime);
+        _activePlayer.transform.position = new Vector3(newPosition.x, _activePlayer.transform.position.y, _activePlayer.transform.position.z);
+        if (_activePlayer.transform.position.x == _targetPosition.x)
         {
             _isMooving = false;
         }
@@ -50,21 +54,27 @@ public class PlayerMovement : MonoBehaviour
         if (!MenuManager.GameAcvive)
             return;
 
-        _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y);
+        _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, _activePlayer.transform.position.y);
 
         _isMooving = true;
     }
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(_activePlayer); // Сохраняем объект при загрузке новой сцены
+    //    }
+    //    else
+    //    {
+    //        Destroy(_activePlayer); // Уничтожаем дубликаты объекта
+    //    }
+    //}
+
+    public void AcnivePlayer(int index)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Сохраняем объект при загрузке новой сцены
-        }
-        else
-        {
-            Destroy(gameObject); // Уничтожаем дубликаты объекта
-        }
+        if (_players != null && index < _players.Length)
+            _activePlayer = _players[index];
     }
 }
