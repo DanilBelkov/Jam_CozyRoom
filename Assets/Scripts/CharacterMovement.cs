@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        AcnivePlayer(0);
+        ActivePlayer(0);
 
         rb = _activePlayer.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Зафиксировать вращение
@@ -27,12 +28,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            if (Input.GetMouseButtonDown(0)
+                && CheckForMove())
+                SetTargetPosition();
 
-        if (Input.GetMouseButtonDown(0))
-            SetTargetPosition();
+            if (_isMooving)
+                Move();
+        }
+    }
+    
+    private bool CheckForMove()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-        if (_isMooving)
-            Move();
+        if (hitInfo.collider != null) print(hitInfo.collider.tag);
+        return hitInfo.collider != null && hitInfo.collider.tag != "Target" ? true : false;
     }
     private void Move()
     {
@@ -72,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
-    public void AcnivePlayer(int index)
+    public void ActivePlayer(int index)
     {
         if (_players != null && index < _players.Length)
             _activePlayer = _players[index];

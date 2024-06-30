@@ -189,6 +189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1199771104805990, guid: b25f69a2c3f3bb24e98b26c3acb37fca, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1574039044}
+    - targetCorrespondingSourceObject: {fileID: 1199771104805990, guid: b25f69a2c3f3bb24e98b26c3acb37fca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1574039045}
   m_SourcePrefab: {fileID: 100100000, guid: b25f69a2c3f3bb24e98b26c3acb37fca, type: 3}
 --- !u!1 &84534225
 GameObject:
@@ -264,9 +267,10 @@ GameObject:
   - component: {fileID: 138200807}
   - component: {fileID: 138200806}
   - component: {fileID: 138200809}
+  - component: {fileID: 138200810}
   m_Layer: 0
   m_Name: target_1
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,6 +399,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &138200810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138200805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2120298164}
+          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+          m_MethodName: CheckForMove
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &170490773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1412,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2120298164}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AcnivePlayer
+        m_MethodName: ActivePlayer
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1464,10 +1497,10 @@ RectTransform:
   - {fileID: 1152814395}
   m_Father: {fileID: 1736133302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355.68, y: 116.32}
-  m_SizeDelta: {x: 245.35, y: 279.37}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -139.32, y: -161.68}
+  m_SizeDelta: {x: 203.34998, y: 255.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141052466
 MonoBehaviour:
@@ -1635,8 +1668,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2021327595}
   m_HandleRect: {fileID: 2021327594}
   m_Direction: 2
-  m_Value: 0.9999995
-  m_Size: 0.7978999
+  m_Value: 1
+  m_Size: 0.7179
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1992,6 +2025,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 2.16}
   m_EdgeRadius: 0
+--- !u!50 &1574039045
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574039043}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1651330028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,7 +2402,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2120298164}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AcnivePlayer
+        m_MethodName: ActivePlayer
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2599,7 +2659,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 840072901}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2801,7 +2861,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2120298164}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: AcnivePlayer
+        m_MethodName: ActivePlayer
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2885,10 +2945,10 @@ RectTransform:
   - {fileID: 1108228776}
   m_Father: {fileID: 1736133302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -333.67004, y: 241.19}
-  m_SizeDelta: {x: -667.34, y: -482.37}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 182.82996, y: -49.309998}
+  m_SizeDelta: {x: 365.65997, y: 98.630005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120298162
 MonoBehaviour:
