@@ -45,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (hitInfo.collider != null && hitInfo.collider.tag != "Target")
         {
-            print(hitInfo.collider.tag);
-            print(hitInfo.collider.name);
             return true;
         }
         return false;
