@@ -1,8 +1,14 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] _players;
+
+    private GameObject _activePlayer;
+
     [SerializeField]
     private float speed = 5f; // Скорость перемещения персонажа
     private Rigidbody2D rb;
@@ -14,18 +20,31 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        ActivePlayer(0);
+
+        rb = _activePlayer.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Зафиксировать вращение
     }
 
     void Update()
     {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            if (Input.GetMouseButtonDown(0)
+                && CheckForMove())
+                SetTargetPosition();
 
-        if (Input.GetMouseButtonDown(0))
-            SetTargetPosition();
+            if (_isMooving)
+                Move();
+        }
+    }
+    
+    private bool CheckForMove()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-        if (_isMooving)
-            Move();
+        if (hitInfo.collider != null) print(hitInfo.collider.tag);
+        return hitInfo.collider != null && hitInfo.collider.tag != "Target" ? true : false;
     }
     private void Move()
     {
@@ -35,9 +54,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        var newPosition = Vector2.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
-        transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
-        if (transform.position.x == _targetPosition.x)
+        var newPosition = Vector2.MoveTowards(_activePlayer.transform.position, _targetPosition, speed * Time.deltaTime);
+        _activePlayer.transform.position = new Vector3(newPosition.x, _activePlayer.transform.position.y, _activePlayer.transform.position.z);
+        if (_activePlayer.transform.position.x == _targetPosition.x)
         {
             _isMooving = false;
         }
@@ -47,21 +66,27 @@ public class PlayerMovement : MonoBehaviour
         if (!MenuManager.GameAcvive)
             return;
 
-        _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y);
+        _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, _activePlayer.transform.position.y);
 
         _isMooving = true;
     }
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(_activePlayer); // Сохраняем объект при загрузке новой сцены
+    //    }
+    //    else
+    //    {
+    //        Destroy(_activePlayer); // Уничтожаем дубликаты объекта
+    //    }
+    //}
+
+    public void ActivePlayer(int index)
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Сохраняем объект при загрузке новой сцены
-        }
-        else
-        {
-            Destroy(gameObject); // Уничтожаем дубликаты объекта
-        }
+        if (_players != null && index < _players.Length)
+            _activePlayer = _players[index];
     }
 }
