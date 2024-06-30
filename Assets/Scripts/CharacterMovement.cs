@@ -4,6 +4,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    private GameObject _player;
+
+    [SerializeField]
     private float speed = 5f; // Скорость перемещения персонажа
     private Rigidbody2D rb;
     private static PlayerMovement instance;
@@ -14,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = _player.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Зафиксировать вращение
     }
 
