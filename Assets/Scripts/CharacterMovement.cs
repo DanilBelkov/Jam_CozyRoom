@@ -6,9 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] _players;
-
+    private Animator anim;
     private GameObject _activePlayer;
-
+    private SpriteRenderer sr;
     [SerializeField]
     private float speed = 5f; // Скорость перемещения персонажа
     private Rigidbody2D rb;
@@ -24,10 +24,13 @@ public class PlayerMovement : MonoBehaviour
 
         rb = _activePlayer.GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Зафиксировать вращение
+        anim = _activePlayer.GetComponent<Animator>();
+        sr = _activePlayer.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        Flip();
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButtonDown(0)
@@ -62,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if (_activePlayer.transform.position.x == _targetPosition.x)
         {
             _isMooving = false;
+            anim.SetFloat("moveX", 0);
         }
     }
     private void SetTargetPosition()
@@ -72,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
         _targetPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, _activePlayer.transform.position.y);
 
         _isMooving = true;
+
+        anim.SetFloat("moveX", Mathf.Abs(_targetPosition.x));
     }
 
     //private void Awake()
@@ -92,4 +98,18 @@ public class PlayerMovement : MonoBehaviour
         if (_players != null && index < _players.Length)
             _activePlayer = _players[index];
     }
+
+
+    private void Flip()
+    {
+        if (_targetPosition.x > 0)
+        {
+            sr.flipX = false;
+        }
+        else if (_targetPosition.x < 0)
+        {
+            sr.flipX = true;
+        }
+    }
+
 }
